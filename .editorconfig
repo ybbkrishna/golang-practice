@@ -7,11 +7,11 @@ root = true
 [*]
 
 # Change these settings to your own preference
-indent_style = space
-indent_size = 2
+indent_style = tab
+indent_size = 4
 
 tab_size = 4
-translate_tabs_to_spaces = true
+translate_tabs_to_spaces = false
 
 # We recommend you to keep these unchanged
 end_of_line = lf
@@ -21,3 +21,7 @@ insert_final_newline = true
 
 [*.md]
 trim_trailing_whitespace = false
+
+[*.go]
+indent_style = tab
+indent_size = 4
