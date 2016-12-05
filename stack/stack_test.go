@@ -12,7 +12,7 @@ func TestPush(t *testing.T) {
 			t.Fail()
 		}
 	}()
-	s := stack{
+	s := Stack{
 		capacity: 1,
 	}
 	s.Push(1)
@@ -30,7 +30,7 @@ func TestPop(t *testing.T) {
 			t.Fail()
 		}
 	}()
-	s := stack{
+	s := Stack{
 		capacity: 1,
 	}
 	s.Push(1)

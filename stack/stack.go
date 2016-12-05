@@ -8,10 +8,10 @@ import (
 	"strings"
 )
 
-type stack struct {
+type Stack struct {
 	head     *node
 	length   int
-	capacity int
+	Capacity int
 }
 
 type node struct {
@@ -19,8 +19,8 @@ type node struct {
 	value interface{}
 }
 
-func (s *stack) Push(elem interface{}) (bool, error) {
-	if s.length == s.capacity {
+func (s *Stack) Push(elem interface{}) (bool, error) {
+	if s.length == s.Capacity {
 		panic("Stack Overflow")
 	}
 	node := node{
@@ -31,7 +31,7 @@ func (s *stack) Push(elem interface{}) (bool, error) {
 	return true, nil
 }
 
-func (s *stack) Pop() (interface{}, error) {
+func (s *Stack) Pop() (interface{}, error) {
 	if s.length == 0 {
 		panic("Empty stack")
 	}
@@ -41,11 +41,11 @@ func (s *stack) Pop() (interface{}, error) {
 	return node.value, nil
 }
 
-func (s stack) Len() int {
+func (s Stack) Len() int {
 	return s.length
 }
 
-func (s stack) String() string {
+func (s Stack) String() string {
 	str := []string{}
 	node := s.head
 	for i := 0; i < s.length; i++ {
