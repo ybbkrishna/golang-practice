@@ -13,7 +13,7 @@ func TestPush(t *testing.T) {
 		}
 	}()
 	s := Stack{
-		capacity: 1,
+		Capacity: 1,
 	}
 	s.Push(1)
 	if fmt.Sprint(s) != "1" || s.length != 1 {
@@ -31,7 +31,7 @@ func TestPop(t *testing.T) {
 		}
 	}()
 	s := Stack{
-		capacity: 1,
+		Capacity: 1,
 	}
 	s.Push(1)
 	val, _ := s.Pop()

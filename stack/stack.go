@@ -1,6 +1,3 @@
-/*
-	The stack package implements a basic stack with push pop capabilities
-*/
 package stack
 
 import (
@@ -8,6 +5,12 @@ import (
 	"strings"
 )
 
+/*
+	Package stack is basic stack implementation
+	implements a basic stack with push pop capabilities
+*/
+
+// Stack is a type for stack
 type Stack struct {
 	head     *node
 	length   int
@@ -19,6 +22,7 @@ type node struct {
 	value interface{}
 }
 
+//Push puts the element to the top of the stack
 func (s *Stack) Push(elem interface{}) (bool, error) {
 	if s.length == s.Capacity {
 		panic("Stack Overflow")
@@ -31,6 +35,7 @@ func (s *Stack) Push(elem interface{}) (bool, error) {
 	return true, nil
 }
 
+//Pop gets the element from the top of the stack
 func (s *Stack) Pop() (interface{}, error) {
 	if s.length == 0 {
 		panic("Empty stack")
@@ -41,6 +46,7 @@ func (s *Stack) Pop() (interface{}, error) {
 	return node.value, nil
 }
 
+//Len gives the current size of the stack
 func (s Stack) Len() int {
 	return s.length
 }
