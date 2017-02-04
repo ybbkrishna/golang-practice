@@ -1,0 +1,13 @@
+extends: test2.yaml
+
+test:
+  hello: 333
+  worked: true
+  xyz: fuck_it
+
+test1:
+  hello: 435
+  worked: 'filth'
+
+test2:
+  xyz: fuck_it
