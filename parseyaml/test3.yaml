@@ -1,0 +1,8 @@
+test:
+- hello: 123
+- worked: true
+- test1:
+    hello: 435
+    worked: 'filth'
+- test2:
+    {xyz: true, hey: true}

@@ -2,11 +2,13 @@ package main
 
 import (
 	"io/ioutil"
-	"gopkg.in/yaml.v2"
+
 	"fmt"
+
+	"gopkg.in/yaml.v2"
 )
 
-const PRODUCTION_RULES = "./test.yaml"
+const PRODUCTION_RULES = "./test3.yaml"
 
 func LoadRulesFile(
 	fname string,
@@ -24,7 +26,7 @@ func LoadRulesFile(
 		switch filesToExtend.(type) {
 		case []interface{}:
 			files, _ := filesToExtend.([]interface{})
-			for _, file := range files{
+			for _, file := range files {
 				fileName, _ := file.(string)
 				LoadRulesFile(fileName, result)
 			}
@@ -32,16 +34,37 @@ func LoadRulesFile(
 			file, _ := filesToExtend.(string)
 			LoadRulesFile(file, result)
 		}
-		delete(parsedResult, "extends");
+		delete(parsedResult, "extends")
 	}
 	merge(result.(map[interface{}]interface{}), parsedResult)
 	return nil
 }
 
 func main() {
-  var testConfig = make(map[interface{}]interface{})
-  LoadRulesFile(PRODUCTION_RULES, testConfig)
-	fmt.Println(testConfig)
+	// var testConfig = make(map[interface{}]interface{})
+	// LoadRulesFile(PRODUCTION_RULES, testConfig)
+	// val := reflect.ValueOf(testConfig["test"])
+	// switch val.Kind() {
+	// case reflect.Map:
+	// 	fmt.Println("its a map")
+	// case reflect.Array:
+	// 	fallthrough
+	// case reflect.Slice:
+	// 	fmt.Println("its array of maps")
+	// default:
+	// 	fmt.Println(val.Kind())
+	// }
+
+	// fmt.Println(testConfig)
+	parseTest3()
+}
+
+func parseTest3() {
+	var testConfig = make(map[interface{}]interface{})
+	LoadRulesFile(PRODUCTION_RULES, testConfig)
+	val := testConfig["test"].([]interface{})
+	val2 := val[3].(map[interface{}]interface{})
+	fmt.Println(val2)
 }
 
 func merge(
