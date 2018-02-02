@@ -4,7 +4,7 @@ import (
 	"fmt"
 )
 
-func main() {
+func switchStmt() {
 	var lol interface{}
 	lol = map[string]interface{}{
 		"hello": 1,

@@ -64,7 +64,8 @@ func parseTest3() {
 	LoadRulesFile(PRODUCTION_RULES, testConfig)
 	val := testConfig["test"].([]interface{})
 	val2 := val[3].(map[interface{}]interface{})
-	fmt.Println(val2)
+	val3 := val2["test2"].([]interface{})
+	fmt.Println(val3)
 }
 
 func merge(

@@ -5,4 +5,5 @@ test:
     hello: 435
     worked: 'filth'
 - test2:
-    {xyz: true, hey: true}
+    - {xyz: true, hey: true}
+    - {xyz: true, hey: true}
