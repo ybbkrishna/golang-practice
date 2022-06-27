@@ -1,8 +1,8 @@
 githubRepoOwner: ybbkrishna
 githubRepoName: golang-practice
 githubHost: github.com
-requireChecks: true
-requireApproval: true
+requireChecks: false
+requireApproval: false
 githubRemote: origin
 githubBranch: master
 mergeMethod: rebase
