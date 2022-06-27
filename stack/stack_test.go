@@ -1,43 +1,136 @@
 package stack
 
 import (
-	"fmt"
+	"reflect"
 	"testing"
 )
 
-func TestPush(t *testing.T) {
-	defer func() {
-		if err := recover(); err == nil {
-			t.Log("stackoverflow error expected")
-			t.Fail()
+func TestStack_Push(t *testing.T) {
+	type fields struct {
+		head     *node
+		length   int
+		Capacity int
+	}
+	type args struct {
+		elem interface{}
+	}
+	tests := []struct {
+		name    string
+		fields  fields
+		args    args
+		want    bool
+		wantErr bool
+	}{
+		{
+			"[success] Null push",
+
+		},
+		{
+
 		}
-	}()
-	s := Stack{
-		Capacity: 1,
 	}
-	s.Push(1)
-	if fmt.Sprint(s) != "1" || s.length != 1 {
-		t.Log("stack should contain just one")
-		t.Fail()
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			s := &Stack{
+				head:     tt.fields.head,
+				length:   tt.fields.length,
+				Capacity: tt.fields.Capacity,
+			}
+			got, err := s.Push(tt.args.elem)
+			if (err != nil) != tt.wantErr {
+				t.Errorf("Stack.Push() error = %v, wantErr %v", err, tt.wantErr)
+				return
+			}
+			if got != tt.want {
+				t.Errorf("Stack.Push() = %v, want %v", got, tt.want)
+			}
+		})
 	}
-	s.Push(2)
 }
 
-func TestPop(t *testing.T) {
-	defer func() {
-		if err := recover(); err == nil {
-			t.Log("empty stack error expected")
-			t.Fail()
-		}
-	}()
-	s := Stack{
-		Capacity: 1,
+func TestStack_Pop(t *testing.T) {
+	type fields struct {
+		head     *node
+		length   int
+		Capacity int
 	}
-	s.Push(1)
-	val, _ := s.Pop()
-	if v, ok := val.(int); !ok || v != 1 {
-		t.Log("output should be 1")
-		t.Fail()
+	tests := []struct {
+		name    string
+		fields  fields
+		want    interface{}
+		wantErr bool
+	}{
+		// TODO: Add test cases.
 	}
-	s.Pop()
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			s := &Stack{
+				head:     tt.fields.head,
+				length:   tt.fields.length,
+				Capacity: tt.fields.Capacity,
+			}
+			got, err := s.Pop()
+			if (err != nil) != tt.wantErr {
+				t.Errorf("Stack.Pop() error = %v, wantErr %v", err, tt.wantErr)
+				return
+			}
+			if !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("Stack.Pop() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
+func TestStack_Len(t *testing.T) {
+	type fields struct {
+		head     *node
+		length   int
+		Capacity int
+	}
+	tests := []struct {
+		name   string
+		fields fields
+		want   int
+	}{
+		// TODO: Add test cases.
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			s := Stack{
+				head:     tt.fields.head,
+				length:   tt.fields.length,
+				Capacity: tt.fields.Capacity,
+			}
+			if got := s.Len(); got != tt.want {
+				t.Errorf("Stack.Len() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
+func TestStack_String(t *testing.T) {
+	type fields struct {
+		head     *node
+		length   int
+		Capacity int
+	}
+	tests := []struct {
+		name   string
+		fields fields
+		want   string
+	}{
+		// TODO: Add test cases.
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			s := Stack{
+				head:     tt.fields.head,
+				length:   tt.fields.length,
+				Capacity: tt.fields.Capacity,
+			}
+			if got := s.String(); got != tt.want {
+				t.Errorf("Stack.String() = %v, want %v", got, tt.want)
+			}
+		})
+	}
 }
